@@ -191,7 +191,7 @@ class _FormKaryawanPageState extends State<FormKaryawanPage> {
                 obscureText: true,
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(4),
+                  LengthLimitingTextInputFormatter(6),
                 ],
                 decoration: InputDecoration(
                   labelText: 'PIN Kasir (4 Digit Angka)',
@@ -207,8 +207,8 @@ class _FormKaryawanPageState extends State<FormKaryawanPage> {
                   if (val == null || val.trim().isEmpty) {
                     return 'PIN kasir wajib diisi!';
                   }
-                  if (val.trim().length != 4) {
-                    return 'PIN kasir harus tepat 4 digit angka!';
+                  if (val.trim().length != 6) {
+                    return 'PIN kasir harus tepat 6 digit angka!';
                   }
                   return null;
                 },

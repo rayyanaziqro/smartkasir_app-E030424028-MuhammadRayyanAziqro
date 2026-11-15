@@ -18,6 +18,7 @@ class _ProfilTokoPageState extends State<ProfilTokoPage> {
   final _namaTokoController = TextEditingController();
   final _alamatController = TextEditingController();
   final _noWaController = TextEditingController();
+  final _igController = TextEditingController();
   final _footerController = TextEditingController();
 
   // Status visual tombol simpan
@@ -37,6 +38,7 @@ class _ProfilTokoPageState extends State<ProfilTokoPage> {
     _namaTokoController.dispose();
     _alamatController.dispose();
     _noWaController.dispose();
+    _igController.dispose();
     _footerController.dispose();
     super.dispose();
   }
@@ -51,7 +53,10 @@ class _ProfilTokoPageState extends State<ProfilTokoPage> {
           prefs.getString('alamat_toko') ??
           'Jl. Brigjend H. Hasan Basry, Banjarmasin';
       _noWaController.text = prefs.getString('no_wa') ?? '081234567890';
-      _footerController.text = prefs.getString('footer_struk') ?? 'Terima Kasih Atas Kunjungan Anda! Barang yang sudah dibeli tidak dapat ditukar.';
+      _igController.text = prefs.getString('ig_toko') ?? '@smartkasir.poliban';
+      _footerController.text =
+          prefs.getString('footer_struk') ??
+          'Terima Kasih Atas Kunjungan Anda! Barang yang sudah dibeli tidak dapat ditukar.';
       _activeCashierName =
           prefs.getString('active_cashier_name') ?? 'Belum Ditentukan';
     });
@@ -65,6 +70,7 @@ class _ProfilTokoPageState extends State<ProfilTokoPage> {
     await prefs.setString('nama_toko', _namaTokoController.text.trim());
     await prefs.setString('alamat_toko', _alamatController.text.trim());
     await prefs.setString('no_wa', _noWaController.text.trim());
+    await prefs.setString('ig_toko', _igController.text.trim());
     await prefs.setString('footer_struk', _footerController.text.trim());
 
     setState(() => _sedangMenyimpan = false);
@@ -225,7 +231,23 @@ class _ProfilTokoPageState extends State<ProfilTokoPage> {
             ),
             const SizedBox(height: 14),
 
-            // 4. CATATAN KAKI STRUK (FOOTER RECEIPT)
+            // 4. AKUN INSTAGRAM TOKO
+            TextFormField(
+              controller: _igController,
+              decoration: InputDecoration(
+                labelText: 'Akun Instagram Toko',
+                hintText: '@nama_toko',
+                prefixIcon: const Icon(Icons.alternate_email),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 14),
+
+            // 5. CATATAN KAKI STRUK (FOOTER RECEIPT)
             TextFormField(
               controller: _footerController,
               maxLines: 2,
