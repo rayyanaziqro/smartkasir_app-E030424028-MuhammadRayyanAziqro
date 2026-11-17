@@ -147,7 +147,7 @@ class _FormKaryawanPageState extends State<FormKaryawanPage> {
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        'Setiap staf kasir memiliki PIN 4 digit untuk login shift penjualan.',
+                        'Setiap staf kasir memiliki PIN 6 digit untuk login shift penjualan.',
                         style: TextStyle(
                           color: Color(0xFF3A1C71),
                           fontSize: 12,
@@ -184,7 +184,7 @@ class _FormKaryawanPageState extends State<FormKaryawanPage> {
               ),
               const SizedBox(height: 16),
 
-              // 2. INPUT PIN KEAMANAN 4 DIGIT
+              // 2. INPUT PIN KEAMANAN 6 DIGIT
               TextFormField(
                 controller: _pinController,
                 keyboardType: TextInputType.number,
@@ -194,7 +194,7 @@ class _FormKaryawanPageState extends State<FormKaryawanPage> {
                   LengthLimitingTextInputFormatter(6),
                 ],
                 decoration: InputDecoration(
-                  labelText: 'PIN Kasir (4 Digit Angka)',
+                  labelText: 'PIN Kasir (6 Digit Angka)',
                   hintText: 'Contoh: 1234',
                   prefixIcon: const Icon(Icons.lock_outline),
                   border: OutlineInputBorder(
